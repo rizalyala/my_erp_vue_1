@@ -10,6 +10,7 @@
                     >
                         {{ header }}
                     </th>
+                    <th v-if="enableActions" class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Actions</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
@@ -20,6 +21,9 @@
                         class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
                         {{ row[header] }}
+                    </td>
+                    <td v-if="enableActions" class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <button @click="$emit('delete-row', row)" class="text-red-600 hover:text-red-900">Delete</button>
                     </td>
                 </tr>
             </tbody>
@@ -38,6 +42,10 @@ export default {
         rows: {
             type: Array,
             required: true
+        },
+        enableActions: {
+            type: Boolean,
+            default: false
         }
     }
 };

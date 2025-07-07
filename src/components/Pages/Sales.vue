@@ -1,5 +1,5 @@
 <template>
-  <div class="p-8 bg-gray-50 min-h-screen">
+  <div class="p-8 min-h-screen">
     <h1 class="text-3xl font-bold mb-8 text-gray-800">Sales Dashboard</h1>
 
     <!-- Sales KPI Cards -->
@@ -12,10 +12,21 @@
 
     <!-- Recent Sales Table -->
     <div class="bg-white rounded-lg shadow p-6">
-        <h2 class="text-2xl font-bold mb-4">Recent Sales</h2>
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-2xl font-bold text-gray-800">Recent Sales</h2>
+            <div>
+                <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2">
+                    +
+                </button>
+                <button class="bg-red-300 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
+                    Delete Selected
+                </button>
+            </div>
+        </div>
         <Tables
-            :headers="['Sale ID', 'Customer', 'Product', 'Quantity', 'Total']"
-            :rows="saleRows"/>
+            :headers="['Sale ID', 'Customer', 'Product', 'Quantity', 'Total', 'Actions']"
+            :rows="saleRows"
+            :enable-actions="true"/>
     </div>
   </div>
 </template>
@@ -58,6 +69,13 @@ export default{
                 Quantity: s.quantity,
                 Total: `${s.total.toFixed(2)}`
             }));
+        }
+    },
+    methods: {
+        handleDeleteRow(row) {
+            // In a real application, you would send a request to your backend to delete the sale
+            // For now, we'll just remove it from the local data
+            this.salesData = this.salesData.filter(sale => sale.id !== row['Sale ID']);
         }
     }
 }
