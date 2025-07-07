@@ -25,6 +25,12 @@ import Dashboard from './components/Pages/Dashboard.vue';
             <router-link to="/purchases" class="block px-8 py-2 rounded hover:bg-gray-700" active-class="bg-gray-700">Purchasing</router-link>
             </li>
             <li>
+            <router-link to="/products" class="block px-8 py-2 rounded hover:bg-gray-700" active-class="bg-gray-700">Products</router-link>
+            </li>
+            <li>
+            <router-link to="/customers" class="block px-8 py-2 rounded hover:bg-gray-700" active-class="bg-gray-700">Customers</router-link>
+            </li>
+            <li>
             <router-link to="/reports" class="block px-8 py-2 rounded hover:bg-gray-700" active-class="bg-gray-700">Reports</router-link>
             </li>
             <li>
